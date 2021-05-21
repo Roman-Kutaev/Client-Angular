@@ -1,0 +1,52 @@
+<figure>
+  <h3>Admin функционал</h3>
+  <label for="item-checkbox">Удаление пользователя по Id:
+    <input id="item-checkbox" type="radio" name="raz"/>
+    <form class="item">
+      <label> Id: <input name="id" type="text" [(ngModel)]="userId"></label>
+      <button (click)="delete(); refreshPage()">Удалить</button>
+    </form>
+  </label>
+<br>
+  <label>Добавить нового пользователя:
+    <input id="item1-checkbox" type="radio" name="raz"/>
+    <form class="item1">
+      <label>Имя: <input type="text" name="firstName" [(ngModel)]="firstName"></label>
+      <label>Фамилия: <input type="text" name="lastName" [(ngModel)]="lastName"></label>
+      <button (click)="addUser(); refreshPage()">Добавить пользователя</button>
+    </form>
+  </label>
+  <br>
+  <label>Обновить данные пользователя:
+  <input id="item2-checkbox" type="radio" name="raz"/>
+    <form class="item2">
+      <label>Id: <input name="id" [(ngModel)]="userId"></label>
+      <label>Имя: <input type="text" name="firstName" [(ngModel)]="firstName"></label>
+      <label>Фамилия: <input type="text" name="lastName" [(ngModel)]="lastName"></label>
+      <button (click)="updateUser(); refreshPage()">Изменить</button>
+    </form>
+</label>
+
+</figure>
+<br>
+
+<table>
+  <caption><b>{{heading}}</b></caption>
+  <thead>
+  <tr>
+    <td>Id</td>
+    <td>Имя</td>
+    <td>Фамилия</td>
+  </tr>
+  </thead>
+  <tbody >
+  <tr *ngFor="let user of users">
+    <td>{{user.id}}</td>
+    <td>{{user.firstName}}</td>
+    <td>{{user.lastName}}</td>
+  </tr>
+  </tbody>
+ </table>
+
+
+
