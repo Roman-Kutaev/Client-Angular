@@ -9,7 +9,7 @@ import {User} from "./entity/user";
 })
 export class AppComponent {
   heading: string = "Черный список клиентов"
-
+  url: string = "http://localhost:8080/api/v1/blacklist";
   users: User[] | undefined;
   user: User | undefined;
 
@@ -22,7 +22,7 @@ export class AppComponent {
   }
 
   showAllUsers() {
-    this.http.get<User[]>("http://localhost:8080/api/v1/blacklist").subscribe(result => {
+    this.http.get<User[]>(this.url).subscribe(result => {
       this.users = result;
       console.log(this.users)
     })
@@ -30,16 +30,16 @@ export class AppComponent {
 
   addUser() {
     const body = {firstName: this.firstName, lastName: this.lastName};
-    return this.http.post("http://localhost:8080/api/v1/blacklist", body).subscribe();
+    return this.http.post(this.url, body).subscribe();
   }
 
   updateUser() {
     const body = {id: this.userId, firstName: this.firstName, lastName: this.lastName};
-    return this.http.post("http://localhost:8080/api/v1/blacklist", body).subscribe();
+    return this.http.post(this.url, body).subscribe();
   }
 
   delete() {
-    this.http.delete<User>("http://localhost:8080/api/v1/blacklist/" + this.userId).subscribe((result) => {
+    this.http.delete<User>(this.url + "/" + this.userId).subscribe((result) => {
       this.user = result;
       console.log(this.user)
     })
