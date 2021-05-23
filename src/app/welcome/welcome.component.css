@@ -1,0 +1,16 @@
+table, figure, div{
+  width: 870px;
+  text-align: center;
+  border: 1px solid #025602;
+  margin: auto;
+  background: rgba(195, 193, 195, 0.7);
+  padding-bottom: 2px;
+}
+button, input{
+  margin: 5px;
+}
+
+th, td, figure {
+  border: 1px solid darkgreen;
+  text-align: center;
+}

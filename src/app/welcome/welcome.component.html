@@ -1,0 +1,22 @@
+<div>
+<h3>Welcome!</h3>
+<table>
+  <caption><b>{{heading}}</b></caption>
+  <thead>
+  <tr>
+    <td>Id</td>
+    <td>Имя</td>
+    <td>Фамилия</td>
+  </tr>
+  </thead>
+  <tbody >
+  <tr *ngFor="let user of users">
+    <td>{{user.id}}</td>
+    <td>{{user.firstName}}</td>
+    <td>{{user.lastName}}</td>
+  </tr>
+  </tbody>
+</table>
+
+<a routerLink="/login">Страница администратора</a>
+</div>
