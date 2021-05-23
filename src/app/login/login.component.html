@@ -1,0 +1,12 @@
+<div>
+<small *ngIf="isInvalid">Invalid login or password</small>
+
+<div>
+  <p>Форма авторизации Администратора</p>
+  Username: <input type="text" [(ngModel)]="username">
+  Password: <input type="password" [(ngModel)]="password">
+  <button (click)="handleLogin()">Login</button>
+</div>
+
+<a routerLink="/">Вернуться к пользовательской странице</a>
+</div>
