@@ -8,7 +8,7 @@ import {HttpClient} from "@angular/common/http";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  url: string = "http://localhost:8080/api/v1/blacklist";
+  url: string = "http://localhost:8080/api/v1/blacklist/admin";
   login: string = "";
   password: string = "";
   admin: Object | undefined;
@@ -23,7 +23,6 @@ export class LoginComponent implements OnInit {
   handleLogin() {
     this.http.get(this.url + "/" + this.login + "/" + this.password).subscribe(result =>{
     this.admin = result;
-    console.log(this.admin)
     if (this.admin !== null)    {
       console.log('this.admin - ' + this.admin);
       this.isInvalid = false;
