@@ -23,13 +23,14 @@ export class LoginComponent implements OnInit {
   handleLogin() {
     this.http.get(this.url + "/" + this.login + "/" + this.password).subscribe(result =>{
     this.admin = result;
-    console.log(this.admin)});
-    if (this.admin !== undefined)    {
-      console.log(this.admin)
+    console.log(this.admin)
+    if (this.admin !== null)    {
+      console.log('this.admin - ' + this.admin);
       this.isInvalid = false;
       this.router.navigate(['admin', this.login]);
     } else {
       this.isInvalid = true;
     }
+    });
   }
 }
