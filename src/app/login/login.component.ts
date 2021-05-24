@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router, Routes} from "@angular/router";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-login',
@@ -7,20 +8,26 @@ import {Router, Routes} from "@angular/router";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  username: string = "";
+  url: string = "http://localhost:8080/api/v1/blacklist";
+  login: string = "";
   password: string = "";
+  admin: Object | undefined;
   isInvalid: boolean = false;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private http: HttpClient) {
   }
 
   ngOnInit() {
   }
 
   handleLogin() {
-    if (this.username === "Admin" && this.password === "Admin") {
+    this.http.get(this.url + "/" + this.login + "/" + this.password).subscribe(result =>{
+    this.admin = result;
+    console.log(this.admin)});
+    if (this.admin !== undefined)    {
+      console.log(this.admin)
       this.isInvalid = false;
-      this.router.navigate(['admin', this.username]);
+      this.router.navigate(['admin', this.login]);
     } else {
       this.isInvalid = true;
     }
